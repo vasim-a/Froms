@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import User from "../../../models/User";
 import { connectToDatabase } from "../../../lib/db";
-import { ok } from "assert";
 
 export async function POST(request) {
   try {
@@ -25,12 +24,12 @@ export async function POST(request) {
     await newUser.save();
 
     return NextResponse.json(
-      { message: "User Register", ok: true },
+      { message: "User Register", OK: true },
       { status: 201 }
     );
   } catch (err) {
     return NextResponse.json(
-      { error: "Error in Server", ok: false },
+      { error: "Error in Server", OK: false },
       { status: 500 }
     );
   }

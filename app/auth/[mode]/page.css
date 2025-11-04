@@ -60,17 +60,17 @@
 
 .login {
   position: relative;
-  padding: 60px;
+  padding: 40px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  width: 500px;
+  width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
@@ -99,6 +99,7 @@
   background: #fff;
   border: none;
   margin-bottom: 30px;
+  font-family: serif;
 }
 
 .login .inputBox ::placeholder {
@@ -134,7 +135,8 @@
 .login .group {
   display: flex;
   justify-content: center;
-  text-decoration: underline;
+  font-size: 13px;
+  font-family: serif;
 }
 
 .login .group a {
@@ -278,4 +280,8 @@
   to {
     translate: 174% 0;
   }
+}
+
+.link {
+  text-decoration: underline;
 }
