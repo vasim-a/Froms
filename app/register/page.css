@@ -5,7 +5,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-section {
+.login-main {
   position: relative;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ section {
   overflow: hidden;
 }
 
-section .bg {
+.login-main .bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@ section .bg {
   pointer-events: none;
 }
 
-section .trees {
+.login-main .trees {
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@ section .trees {
   pointer-events: none;
 }
 
-section .girl {
+.login-main .girl {
   position: absolute;
   scale: 0.65;
   pointer-events: none;
@@ -103,6 +103,16 @@ section .girl {
 
 .login .inputBox ::placeholder {
   color: #8f2c24;
+}
+
+#btn {
+  pointer-events: all;
+}
+
+#btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .login .inputBox #btn {
@@ -228,5 +238,44 @@ section .girl {
   100% {
     top: 110%;
     transform: translateX(20px) rotate(225deg);
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  display: inline-grid;
+  width: 80px;
+  aspect-ratio: 2;
+  box-shadow: 0 5px #574951;
+  overflow: hidden;
+}
+.loader:before {
+  content: "";
+  margin: 0 25%;
+  background: #83988e;
+  clip-path: polygon(
+    97.55% 65.45%,
+    50% 100%,
+    2.45% 65.45%,
+    20.61% 9.55%,
+    79.39% 9.55%
+  );
+  transform-origin: bottom;
+  animation: l7-0 0.5s linear infinite, l7-1 3s steps(6) infinite;
+}
+@keyframes l7-0 {
+  0% {
+    rotate: -36deg;
+  }
+  to {
+    rotate: 36deg;
+  }
+}
+@keyframes l7-1 {
+  0% {
+    translate: -174% 0;
+  }
+  to {
+    translate: 174% 0;
   }
 }

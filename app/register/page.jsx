@@ -2,10 +2,14 @@
 import { useState } from "react";
 import "../register/page.css";
 import axios from "axios";
+import { toast } from "react-toastify";
+import Spinner from "../components/spinner";
 
 export default function Registrations() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const leaves = [
     "/assets/leaf_01.png",
     "/assets/leaf_02.png",
@@ -14,13 +18,27 @@ export default function Registrations() {
   ];
 
   const formSubmit = async () => {
-    const response = await axios.post("/api/register", { email, password });
-    if (response) console.log(response);
+    setDisabled(true);
+    setLoading(true);
+    try {
+      const response = await axios.post("/api/register", { email, password });
+
+      if (response.data.ok) {
+        toast.success("Login Successful!");
+      } else {
+        toast.error(response.data.message || "Login Failed!");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Something went wrong!");
+    } finally {
+      setDisabled(false);
+      setLoading(false);
+    }
   };
 
   return (
     <div>
-      <section>
+      <section className="login-main">
         {/* Leaves animation section */}
         <div className="leaves">
           <div className="set">
@@ -66,7 +84,7 @@ export default function Registrations() {
               />
             </div>
             <div className="inputBox">
-              <input type="submit" value="Login" id="btn" />
+              <input type="submit" disabled={disabled} value="Login" id="btn" />
             </div>
           </form>
           <div className="group">
@@ -74,6 +92,7 @@ export default function Registrations() {
           </div>
         </div>
       </section>
+      {loading && <Spinner />}
     </div>
   );
 }
